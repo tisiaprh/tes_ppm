@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel=stylesheet href=jquery.mobile-1.4.5.css />
+	<script src=demos/js/jquery.js></script>
+	<script src=demos/js/jquery.mobile-1.4.5.js></script>
+	<script type="text/javascript">
+		function cal_pangkat() {
+			var n = document.getElementById("pangkat").value;
+			var p=Math.pow(n,2);
+			n=parseInt(n);
+			var hasil = "Pangkat : " + p + "<br>";
+			document.getElementById("result").innerHTML=hasil;
+		}
+		function show_rgb() {
+			var n = document.getElementById("rgb").value;
+			if (n == "") {
+				alert ("Input RGB code!");
+				document.getElementById("rgb").value = "";
+				document.getElementById("rgb").focus();
+				return false;
+			}
+			$(document).ready(function(){
+				$(".ui-btn ui-corner-all").click(function(){
+					$("#war").css("background-color","n");
+				});
+			});
+			
+			// document.getElementById("myH1").style.color = n;
+
+		}
+		function gogo(){
+		var x = document.getElementById("mySelect").value;
+    	document.getElementById("demo").innerHTML = "<a href=" + x + "> go to " + x + "</a>";
+		}
+		$( document ).on( "click", ".show-page-loading-msg", function() {
+	    var $this = $( this ),
+	        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+	        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+	        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+	        textonly = !!$this.jqmData( "textonly" );
+	        html = $this.jqmData( "html" ) || "";
+	    $.mobile.loading( "show", {
+	            text: msgText,
+	            textVisible: textVisible,
+	            theme: theme,
+	            textonly: textonly,
+	            html: html
+	    });
+	})
+	.on( "click", ".hide-page-loading-msg", function() {
+	    $.mobile.loading( "hide" );
+	});
+	</script>
+</head>
+<body>
+	<div data-role="page" id="pone">
+		<div data-role="header">
+			<h1> Kalkulator </h1>
+		</div>
+		<div data-role="content">
+			<form>
+		<div class="ui-field-contain">
+		    <label for="select-native-1">Go to page:</label>
+		    <select id="mySelect" onchange="gogo()">
+		        <option value="#pone">One</option>
+		        <option value="#ptwo">Two</option>
+		        <option value="#pthree">Three</option>
+		    </select>
+		    
+		</div>
+		</form>
+			<h3> Input number : </h3>
+			<input type="text" name="pangkat" id="pangkat" />
+			<button class="ui-btn ui-corner-all" onclick="cal_pangkat()">Convert</button>
+			<br>
+			<div id="result"></div>
+			<br>
+			<p id="demo"></p>
+		</div>
+	</div>
+
+	<div data-role="page" id="ptwo">
+		<div data-role="header">
+			<h1> RGB Color </h1>
+		</div>
+		<div data-role="content">
+			<h3> Input color RGB code : </h3>
+			<input type="text" name="rgb" id="rgb" />
+			<button class="ui-btn ui-corner-all" onclick="show_rgb()">Show</button>
+			<br>
+			<h1 id>Taraaaa<br>
+				<input type="text" name="war" id="war">
+			</h1>
+			<br>
+			<p id="demo1"></p>
+		</div>
+		<div data-role="footer">
+			<a href=#pone>Back to main page</a>
+		</div>
+	</div>
+	
+	<div data-role="page" id="pthree">
+		<div data-role="header">
+			<h1> Rangkuman Materi </h1>
+		</div>
+		<form>
+		    <label for="slider-1">Nilai:</label>
+		    <input type="range" name="slider-1" id="slider-1" min="0" max="100" value="50">
+		</form>
+		<div data-role="content">
+			<button class="show-page-loading-msg" data-textonly="true" data-textvisible="true" data-msgtext="Pada pertemuan ini belajar mengenai perkembangan dari 1G-5G dan juga masing-masing kelebihan dan kekurangannya." data-inline="true">Mobile Phone Evolution</button>
+			<a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Fungsi Utama Git</a>
+			<div data-role="popup" id="popupBasic">
+			<p>Mengatur versi dari source code program anda dengan mengasih tanda baris dan code mana yang ditambah atau diganti</p>
+			</div>
+			Version Control dibagi menjadi 3 yaitu:<br>
+			<div class="ui-grid-b">
+			    <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">VCS Lokal</div></div>
+			    <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">VCS Terpusat</div></div>
+			    <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">VCS Terdistribusi</div></div>
+			</div>
+		</div>
+		<div data-role="panel" id="mypanel">
+		    <p> Keterangan : </p>
+		    <p> MATA KULIAH	:	Pemrograman Perangkat Mobile <br> DOSEN	:	Anita Nathania P., S. Kom,MMT<br>HARI / TGL	:	Selasa, 27 Maret 2018<br></p>
+		</div>
+		
+		<div data-role="footer">
+			<a href=#pone>Back to main page</a>
+		</div>
+	</div>
+</body>
+</html>
